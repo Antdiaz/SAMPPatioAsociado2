@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAMPPatioAsociado.Views.ItemsPage"
+             xmlns:local="clr-namespace:SAMPPatioAsociado.ViewModels"  
+             xmlns:model="clr-namespace:SAMPPatioAsociado.Models" 
+             xmlns:custom="clr-namespace:SAMPPatioAsociado"
+             x:Name="BrowseItemsPage">
+    <ContentPage.BindingContext>
+        <local:ListaViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Orientation="Vertical" Spacing="30">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="large_deacero.png"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start" 
+                       Margin="15, 0, 0, 0"/>
+                <Image Source="truck.png"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="Start" 
+                   Margin="0, 5, 0, 0"/>
+                <Label Text="Lote: &#x0a; 2239474899868"
+                           VerticalOptions="Start"
+                           HorizontalOptions="End"
+                           FontAttributes="Bold"
+                           FontSize="12"
+                           Margin="0, 5, 5, 0"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                    <Frame CornerRadius="10" Padding="0" BorderColor="black" WidthRequest="215" HeightRequest="50" Margin="10,0,0,0" BackgroundColor="#d7dbd8">
+                        <custom:CustomPicker  Title="Sin Proveedor" VerticalOptions ="Start" x:Name="Proveedor"
+                      ItemDisplayBinding="{Binding Value}" HorizontalOptions="StartAndExpand"
+                    ItemsSource="{Binding PickerItemList}"
+                    SelectedItem="{Binding SelectedItem}" 
+                   SelectedIndexChanged="Proveedor_SelectedIndexChanged" WidthRequest="280"
+                      Grid.Column="1"  
+                   Grid.Row="0"
+                    ></custom:CustomPicker>
+                    </Frame>
+                    <!--<Button  Text="Proveedor Juan" TextColor="#616161"  
+                    FontAttributes="None" WidthRequest="215" HeightRequest="50" CornerRadius="10" FontSize="Large" HorizontalOptions="Start"  
+                    BackgroundColor="#d7dbd8" Margin="5, 0, 5, 0" />-->
+                <!--<Entry Command="{Binding SubmitCommand}" CornerRadius="10" Text="SIN PLACAS" TextColor="#616161"  
+                     FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#d7dbd8" />-->
+                <custom:CustomEntry x:Name="Placa" Placeholder="SIN PLACAS"   
+                           PlaceholderColor="#616161" HeightRequest="40" BackgroundColor="transparent"  
+                           Keyboard="Default"  CornerRadius="10"
+                           TextColor="Black" Margin="0, 0, 5, 0"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Materiales"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="15, -10, 5, 0"/>
+                </StackLayout>
+                <!--<ScrollView Orientation="Horizontal" Margin="0, -10, 0, 0" HorizontalScrollBarVisibility="Never">-->
+                    <!--<StackLayout Orientation="Horizontal" Margin="0, 0, 0, 0" >-->
+                        <!--<ListView ItemsSource="{Binding MaterialList}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Button  Text="{Binding NombreCorto}" TextColor="#f7bd0c"  
+                                            FontAttributes="Bold" WidthRequest="60" HeightRequest="60" CornerRadius="50" FontSize="16" HorizontalOptions="Start"  
+                                             Margin="5, 0, 0, 0" BackgroundColor="White" BorderColor="#c9c8c7"  BorderWidth="1"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>-->
+                    <!--</StackLayout>-->
+                    <!--</ScrollView>-->
+                <ScrollView Orientation="Horizontal" Margin="15,-10,15, 0" HorizontalScrollBarVisibility="Never">
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="GridOpciones" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                            <!--<RowDefinition Height="5*" ></RowDefinition>-->
+                        </Grid.RowDefinitions>
+
+
+                    </Grid>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal">
+                <Label Text="Mas Comprados"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="15, 10, 5, 0"/>
+                    <Button  Text="Ver todos" TextColor="#787774"  
+                    FontAttributes="Bold"  FontSize="16" HorizontalOptions="EndAndExpand"  
+                     Margin="0, 0, 0, 0" BackgroundColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Image Source="PlacaYEstructura.png"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start" 
+                   Margin="5, 0, 0, 0"
+                   WidthRequest="200" HeightRequest="150"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="RI-Retorno Industrial"
+                           WidthRequest="100" HeightRequest="80"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="40,10, 5, 0"/>
+                            <ImageButton Source="Captura.png"
+                                Margin="-10,-15,0, 0"
+                                WidthRequest="30" HeightRequest="30"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" 
+                                BackgroundColor="transparent"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
